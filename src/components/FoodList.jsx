@@ -15,6 +15,7 @@ function FoodList() {
     }
 
     const addFood=(values)=>{
+      console.log(values)
       setFoodsList([...allFoods,values])
     }
     
@@ -26,14 +27,15 @@ function FoodList() {
         <AddFoodForm addFood={addFood}/>
         <br/>
         <Search setSearchInput={setSearchInput} />
-        {filtered.map((f) => (
+        { filtered.map((f) => (
               <FoodBox
                 key={f.id}
                 food={f}
                 deleteFunction={deleteFunction}
               />
             ))}
-      </div>
+          {!filtered.length && <h2>There is no more food to show</h2>}  
+          </div>
     );
   }
   

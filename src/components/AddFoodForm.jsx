@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Input, Button,Form,Divider } from "antd";
+import * as uuid from "uuid"
+
 function AddFoodForm({addFood}){
     const [form] = Form.useForm();
     const handleSubmit = () => {
         form.validateFields().then((values) => {
-          addFood(values);
+          addFood({...values,"id":uuid.v4()});
           form.resetFields();
         });
       };
